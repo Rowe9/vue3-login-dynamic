@@ -1,20 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { firstMenu } from "@/utils/map-menus";
 
 const routes = [
   {
+    // 重定向到main
     path: "/",
-    name: "home",
-    component: HomeView,
+    redirect: "/main",
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/login",
+    component: () => import("../views/login/Login.vue"),
+  },
+  {
+    path: "/main",
+    name: "main",
+    component: () => import("../views/main/Main.vue"),
   },
 ];
 
@@ -23,4 +23,16 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to) => {
+  // 只有登录成功(token), 才能真正进入到main页面
+  const token = localStorage.getItem("token");
+  if (to.path.startsWith("/main") && !token) {
+    return "/login";
+  }
+
+  // 如果是进入到main
+  if (to.path === "/main") {
+    return firstMenu?.url;
+  }
+});
 export default router;
