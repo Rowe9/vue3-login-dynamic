@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue3_login_dynamic"]=self["webpackChunkvue3_login_dynamic"]||[]).push([[277],{8277:function(n,u,e){e.r(u),e.d(u,{default:function(){return d}});var c=e(3396);const r={class:"menu"},i=(0,c._)("h2",null,"menu",-1),t=[i];function a(n,u){return(0,c.wg)(),(0,c.iD)("div",r,t)}var s=e(89);const l={},o=(0,s.Z)(l,[["render",a]]);var d=o}}]);
+//# sourceMappingURL=277.1d827b9f.js.map
